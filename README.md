@@ -2,14 +2,17 @@
 
 # Project Name
 
+Awesome Book ES6
+
 > Description the project.
+Project was build using modules and ES6. It allows user to add, delete and list books from the library
 
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- HTML
+- CSS
+- Javascript
 
 ## Live Demo (if available)
 
@@ -27,6 +30,7 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 ### Setup
+git clone https://github.com/ecekpo/awesome-book-ES6.git in the local machine
 
 ### Install
 
