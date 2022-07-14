@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: end;
+  padding: 20px;
+  border: 1px solid rgb(229, 225, 225);
+}
+
+.nav-links {
+  display: flex;
+  gap: 5rem;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#contact {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 30px;
+}
+
+.contact-ul {
+  text-align: center;
+}
+
+#book-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 50px;
+}
+
+.form-group {
+  display: flex;
+  gap: 2rem;
+}
+
+.form-div {
+  text-align: center;
+}
+
+label,
+input {
+  width: 500px;
+  height: 5vh;
+}
+
+button {
+  width: 300px;
+  padding: 10px;
+}
+
+table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+th {
+  width: 400px;
+  height: 40px;
+  background: gray;
+}
+
+td {
+  background: rgb(228, 226, 226);
+  width: 400px;
+}
+
+.delete {
+  margin-left: 100px;
+  width: 80px;
+}
+
+.time-div {
+  margin-left: 80%;
+  margin-top: 20px;
+}
+
+.message {
+  color: rgb(238, 115, 115);
+  text-align: center;
+  margin-top: 5px;
+}
+
+h1 {
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    display: flex;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .time-div {
+    margin-left: 200px;
+  }
+
+  label,
+  input {
+    width: 80%;
+  }
+
+  #book-form button {
+    width: 30%;
+  }
+}
