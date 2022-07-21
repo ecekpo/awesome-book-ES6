@@ -4,62 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-    <title>Awesome Book App</title>
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
 </head>
 <body>
+    <h1>Awesome Book App</h1>
 
-    <header>
-        <nav>
-          <ul class="nav-links">
-            <li> <a href="#" id="defaultOpen">List</a> </li>
-            <li> <a href="index.html">Add new</a> </li>
-            <li> <a href="contact.html">Contact</a> </li>
-          </ul>
-        </nav>   
-      </header>
-    <div class="time-div"></div>
+    <form action="frm">
+        <div class="book">
+            <label for="book-name">Book Name</label>
+            <input type="text" id="book-name">
+        </div>
+        <div class="author">
+            <label for="author-name">Author Name</label>
+            <input type="text" id="author-name">
+        </div>
 
-    <h1>Awesome Books</h1>
+        <button type="submit" class="add-btn">Add Book</button>
+    </form>
 
-    <div class="container">
-        <!-- Alert -->
-    <div class="message"></div>
-       
-        <form action="frm" id="book-form">
-           <div class="form-group">
-            <div class="form-div">
-                <label for="book-title">Book Title</label>
-                <input type="text" id="book-title">
-            </div>
-            <div class="form-div">
-                <label for="book-author">Book Author</label>
-                <input type="text" id="book-author">
-            </div>
-           </div>
-            <button type="submit">Add</button>
-        </form>
-     <div id="table">
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                </tr>
-            </thead>
-            <tbody id="books-added"></tbody>
-        </table>
-     </div>
-    </div>
+    <!-- Added Books -->
+    <table>
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Book Author</th>
+            </tr>
+        </thead>
+        <tbody id="book-list"></tbody>
+    </table>
 
-    
-  
-
-    
-
-    <script type="module" src="index.js"></script>
+    <script src="./index.js"></script>
 </body>
 </html>
