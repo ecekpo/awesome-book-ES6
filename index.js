@@ -1,88 +1,80 @@
-// eslint-disable-next-line import/no-cycle, max-classes-per-file
-import addItemFunc from './module/addBook.js';
-// eslint-disable-next-line import/no-cycle
-import deleteFunction from './module/deletebook.js';
-import { DateTime } from './luxon.js';
+// Grabbing elements from HTML and storing them in variables
+const book = document.querySelector('#book-name');
+const author = document.querySelector('#author-name');
+const submit = document.querySelector('.add-btn');
+const list = document.querySelector('#book-list');
 
-const realTime = DateTime.now();
+const addBook = (event) => {
+  // Prevent default submit actions
+  event.preventDefault();
+  if (book.value === '' && author.value === '') {
+    // Form Validation
+    book.classList.add('warning');
+    author.classList.add('warning');
 
-const dateFunc = () => {
-  const timeDiv = document.querySelector('.time-div');
-  timeDiv.innerHTML = `${realTime.toLocaleString(DateTime.DATETIME_MED)}`;
+    book.setAttribute('placeholder', 'Please fill in a book ');
+    author.setAttribute('placeholder', 'Please fill in an autor');
+
+    const doneValidation = () => {
+      book.classList.remove('warning');
+      author.classList.remove('warning');
+
+      book.setAttribute('placeholder', '');
+      author.setAttribute('placeholder', '');
+    };
+
+    setTimeout(doneValidation, 2000);
+  } else if (book.value === '') {
+    book.classList.add('warning');
+    book.setAttribute('placeholder', 'Please fill in a book ');
+
+    const bookValidated = () => {
+      book.classList.remove('warning');
+      book.setAttribute('placeholder', '');
+    };
+    setTimeout(bookValidated, 2000);
+  } else if (author.value === '') {
+    author.classList.add('warning');
+    author.setAttribute('placeholder', 'Please fill in an autor');
+
+    const authorValidated = () => {
+      author.classList.remove('warning');
+      author.setAttribute('placeholder', '');
+    };
+    setTimeout(authorValidated, 2000);
+  } else {
+    // Create New Row
+    const newRow = document.createElement('tr');
+    list.appendChild(newRow);
+
+    // Create new Column for Books
+    const newBookColumn = document.createElement('th');
+    newRow.appendChild(newBookColumn);
+
+    // Add Books to new column
+    newBookColumn.innerText = book.value;
+
+    // Create new Column for Authors
+    const newAuthorColumn = document.createElement('th');
+    newRow.appendChild(newAuthorColumn);
+
+    // Add Authors to new column
+    newAuthorColumn.innerText = author.value;
+
+    // Delete button
+    const deleteButton = document.createElement('button');
+    deleteButton.innerHTML = 'delete';
+    newRow.appendChild(deleteButton);
+
+    // Delete Item from List
+    deleteButton.addEventListener('click', () => {
+      newRow.innerHTML = '';
+    });
+  }
+
+  // Clean out the input fields when submitted
+  book.value = '';
+  author.value = '';
 };
-dateFunc();
 
-// Manipulating Local Storage
-export class Storage {
-  static getBooks() {
-    let books;
-    if (localStorage.getItem('books') === null) {
-      books = [];
-    } else {
-      books = JSON.parse(localStorage.getItem('books'));
-    }
-    return books;
-  }
-
-  static addBook(book) {
-    const books = Storage.getBooks();
-    books.push(book);
-    localStorage.setItem('books', JSON.stringify(books));
-  }
-}
-
-export class bookLibrary {
-  static showItems() {
-    const books = Storage.getBooks();
-
-    books.forEach((book) => bookLibrary.addToList(book));
-  }
-
-  static addToList(book) {
-    const bookList = document.querySelector('#books-added');
-
-    const row = document.createElement('tr');
-    row.className = 'table-row';
-
-    row.innerHTML = `
-            <td>${book.title}</td>
-            <td>${book.author}</td>            
-            <button class='delete'><a href='#'></a>Delete</button>
-    
-        `;
-
-    bookList.appendChild(row);
-  }
-
-  static deleteItem(item) {
-    if (item.classList.contains('delete')) {
-      item.parentElement.remove();
-    }
-  }
-
-  static alertMessage() {
-    const container = document.querySelector('.container');
-    const message = document.querySelector('.message');
-
-    message.innerText = 'Please fill in an author name and book title';
-
-    container.appendChild(message);
-
-    // Alert message to go away after 3000ms
-    setTimeout(() => message.remove(), 3000);
-  }
-
-  static clearFormFields() {
-    document.querySelector('#book-title').value = '';
-    document.querySelector('#book-author').value = '';
-  }
-}
-
-// Show Books
-document.addEventListener('DOMContentLoaded', bookLibrary.showItems);
-
-//  Add a Book
-addItemFunc();
-
-// Remove from a Book
-deleteFunction();
+submit.addEventListener('click', addBook);
